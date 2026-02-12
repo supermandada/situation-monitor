@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { isRefreshing, lastRefresh } from '$lib/stores';
+	import { lang, localeForLang, t, toggleLang } from '$lib/i18n';
 
 	interface Props {
 		onSettingsClick?: () => void;
@@ -7,11 +8,14 @@
 
 	let { onSettingsClick }: Props = $props();
 
-	const lastRefreshText = $derived(
-		$lastRefresh
-			? `Last updated: ${new Date($lastRefresh).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`
-			: 'Never refreshed'
-	);
+	const lastRefreshText = $derived(() => {
+		if (!$lastRefresh) return t('neverRefreshed');
+		const time = new Date($lastRefresh).toLocaleTimeString(localeForLang($lang), {
+			hour: 'numeric',
+			minute: '2-digit'
+		});
+		return t('lastUpdated', { time });
+	});
 </script>
 
 <header class="header">
@@ -22,7 +26,7 @@
 	<div class="header-center">
 		<div class="refresh-status">
 			{#if $isRefreshing}
-				<span class="status-text loading">Refreshing...</span>
+				<span class="status-text loading">{t('refreshing')}</span>
 			{:else}
 				<span class="status-text">{lastRefreshText}</span>
 			{/if}
@@ -30,9 +34,19 @@
 	</div>
 
 	<div class="header-right">
-		<button class="header-btn settings-btn" onclick={onSettingsClick} title="Settings">
+		<button
+			class="header-btn lang-btn"
+			onclick={toggleLang}
+			title={t('language')}
+			aria-label={t('language')}
+		>
+			<span class="btn-icon">{$lang === 'zh' ? '中' : 'EN'}</span>
+			<span class="btn-label">{$lang === 'zh' ? '中文' : 'English'}</span>
+		</button>
+
+		<button class="header-btn settings-btn" onclick={onSettingsClick} title={t('settings')} aria-label={t('settings')}>
 			<span class="btn-icon">⚙</span>
-			<span class="btn-label">Settings</span>
+			<span class="btn-label">{t('settings')}</span>
 		</button>
 	</div>
 </header>
