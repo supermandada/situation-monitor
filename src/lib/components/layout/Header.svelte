@@ -8,7 +8,7 @@
 
 	let { onSettingsClick }: Props = $props();
 
-	const lastRefreshText = $derived(() => {
+	const lastRefreshText = $derived.by(() => {
 		if (!$lastRefresh) return t('neverRefreshed');
 		const time = new Date($lastRefresh).toLocaleTimeString(localeForLang($lang), {
 			hour: 'numeric',
