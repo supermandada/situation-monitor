@@ -25,6 +25,11 @@ npm run dev
 - `VITE_FINNHUB_API_KEY` (markets data)
 - `VITE_FRED_API_KEY` (Fed/economic indicators panel)
 
+### Server-side (Vercel Functions)
+
+- `OPENAI_API_KEY` (required for auto-translation when UI language is Chinese)
+- `OPENAI_MODEL` (optional, default: `gpt-4o-mini`)
+
 ## Production build
 
 ```bash

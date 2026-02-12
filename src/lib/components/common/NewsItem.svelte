@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { NewsItem } from '$lib/types';
 	import { timeAgo } from '$lib/utils';
+	import { lang } from '$lib/i18n';
+	import { translateText } from '$lib/translation';
 
 	interface Props {
 		item: NewsItem;
@@ -17,6 +19,24 @@
 		showDescription = false,
 		compact = false
 	}: Props = $props();
+
+	let translatedTitle = $state<string | null>(null);
+	let translatedDesc = $state<string | null>(null);
+
+	$effect(() => {
+		translatedTitle = null;
+		translatedDesc = null;
+
+		if ($lang !== 'zh') return;
+
+		void translateText(item.title).then((t) => (translatedTitle = t));
+		if (showDescription && item.description) {
+			void translateText(item.description).then((t) => (translatedDesc = t));
+		}
+	});
+
+	const displayTitle = $derived.by(() => ($lang === 'zh' ? translatedTitle ?? item.title : item.title));
+	const displayDesc = $derived.by(() => ($lang === 'zh' ? translatedDesc ?? item.description : item.description));
 </script>
 
 <div class="news-item" class:alert={showAlert && item.isAlert} class:compact>
@@ -30,11 +50,11 @@
 	{/if}
 
 	<a class="item-title" href={item.link} target="_blank" rel="noopener noreferrer">
-		{item.title}
+		{displayTitle}
 	</a>
 
 	{#if showDescription && item.description}
-		<p class="item-description">{item.description}</p>
+		<p class="item-description">{displayDesc}</p>
 	{/if}
 
 	<div class="item-meta">
