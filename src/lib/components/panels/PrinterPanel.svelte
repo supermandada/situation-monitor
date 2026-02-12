@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from '$lib/i18n';
 	import { Panel } from '$lib/components/common';
 
 	interface Props {
@@ -19,14 +20,14 @@
 	const statusClass = $derived(isExpanding ? 'critical' : 'monitoring');
 </script>
 
-<Panel id="printer" title="Money Printer" {status} {statusClass} {loading} {error}>
+<Panel id="printer" title={t('panel.printer')} {status} {statusClass} {loading} {error}>
 	{#if !data && !loading && !error}
-		<div class="empty-state">No Fed data available</div>
+		<div class="empty-state">{t('fed.noFedData')}</div>
 	{:else if data}
 		<div class="printer-gauge">
-			<div class="printer-label">Federal Reserve Balance Sheet</div>
+			<div class="printer-label">{t('fed.balanceSheet')}</div>
 			<div class="printer-value">
-				{data.value.toFixed(2)}<span class="printer-unit">T USD</span>
+				{data.value.toFixed(2)}<span class="printer-unit">{t('printer.unit')}</span>
 			</div>
 			<div class="printer-change" class:up={isExpanding} class:down={!isExpanding}>
 				{data.change >= 0 ? '+' : ''}{(data.change * 1000).toFixed(0)}B ({data.changePercent >= 0

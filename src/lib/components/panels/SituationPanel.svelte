@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from '$lib/i18n';
 	import { Panel } from '$lib/components/common';
 	import { timeAgo } from '$lib/utils';
 	import type { PanelId } from '$lib/config';
@@ -66,7 +67,7 @@
 		</div>
 
 		{#if news.length === 0 && !loading && !error}
-			<div class="empty-state">No recent news</div>
+			<div class="empty-state">{t('situation.noRecentNews')}</div>
 		{:else}
 			<div class="situation-news">
 				{#each news.slice(0, 8) as item (item.id)}

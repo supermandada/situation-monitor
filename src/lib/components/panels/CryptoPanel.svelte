@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from '$lib/i18n';
 	import { Panel } from '$lib/components/common';
 	import { crypto } from '$lib/stores';
 	import { formatCurrency, formatPercentChange, getChangeClass } from '$lib/utils';
@@ -9,9 +10,9 @@
 	const count = $derived(items.length);
 </script>
 
-<Panel id="whales" title="Crypto" {count} {loading} {error}>
+<Panel id="whales" title={t('panel.crypto')} {count} {loading} {error}>
 	{#if items.length === 0 && !loading && !error}
-		<div class="empty-state">No crypto data available</div>
+		<div class="empty-state">{t('crypto.noData')}</div>
 	{:else}
 		<div class="crypto-list">
 			{#each items as coin (coin.id)}

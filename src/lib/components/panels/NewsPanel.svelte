@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from '$lib/i18n';
 	import { Panel, NewsItem } from '$lib/components/common';
 	import type { NewsCategory } from '$lib/types';
 	import type { PanelId } from '$lib/config';
@@ -31,7 +32,7 @@
 
 <Panel id={panelId} {title} {count} {loading} {error}>
 	{#if items.length === 0 && !loading && !error}
-		<div class="empty-state">No news available</div>
+		<div class="empty-state">{t('common.noNews')}</div>
 	{:else}
 		<div class="news-list">
 			{#each items.slice(0, 15) as item (item.id)}

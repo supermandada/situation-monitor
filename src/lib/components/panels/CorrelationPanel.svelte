@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from '$lib/i18n';
 	import { Panel, Badge } from '$lib/components/common';
 	import { analyzeCorrelations } from '$lib/analysis/correlation';
 	import type { NewsItem } from '$lib/types';
@@ -46,14 +47,14 @@
 	}
 </script>
 
-<Panel id="correlation" title="Pattern Analysis" {loading} {error}>
+<Panel id="correlation" title={t('panel.correlation')} {loading} {error}>
 	{#if news.length === 0 && !loading && !error}
-		<div class="empty-state">Insufficient data for analysis</div>
+		<div class="empty-state">{t('analysis.insufficient')}</div>
 	{:else if analysis}
 		<div class="correlation-content">
 			{#if analysis.emergingPatterns.length > 0}
 				<div class="section">
-					<div class="section-title">Emerging Patterns</div>
+					<div class="section-title">{t('correlation.emerging')}</div>
 					{#each analysis.emergingPatterns.slice(0, 3) as pattern}
 						<div class="pattern-item">
 							<div class="pattern-header">
@@ -73,7 +74,7 @@
 
 			{#if analysis.momentumSignals.length > 0}
 				<div class="section">
-					<div class="section-title">Momentum Signals</div>
+					<div class="section-title">{t('correlation.momentum')}</div>
 					{#each analysis.momentumSignals.slice(0, 3) as signal}
 						<div class="signal-item {getMomentumClass(signal.momentum)}">
 							<span class="signal-topic">{signal.name}</span>
@@ -92,7 +93,7 @@
 
 			{#if analysis.crossSourceCorrelations.length > 0}
 				<div class="section">
-					<div class="section-title">Cross-Source Links</div>
+					<div class="section-title">{t('correlation.crossSource')}</div>
 					{#each analysis.crossSourceCorrelations.slice(0, 3) as corr}
 						<div class="correlation-item">
 							<div class="correlation-sources">
@@ -106,7 +107,7 @@
 
 			{#if analysis.predictiveSignals.length > 0}
 				<div class="section">
-					<div class="section-title">Predictive Signals</div>
+					<div class="section-title">{t('correlation.predictive')}</div>
 					{#each analysis.predictiveSignals.slice(0, 2) as signal}
 						<div class="predictive-item">
 							<div class="predictive-pattern">{signal.prediction}</div>
@@ -119,11 +120,11 @@
 			{/if}
 
 			{#if analysis.emergingPatterns.length === 0 && analysis.momentumSignals.length === 0}
-				<div class="empty-state">No significant patterns detected</div>
+				<div class="empty-state">{t('analysis.noneSignificant')}</div>
 			{/if}
 		</div>
 	{:else}
-		<div class="empty-state">No significant patterns detected</div>
+		<div class="empty-state">{t('analysis.noneSignificant')}</div>
 	{/if}
 </Panel>
 

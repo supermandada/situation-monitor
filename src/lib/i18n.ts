@@ -95,6 +95,51 @@ const dict: Record<Lang, Record<string, string>> = {
 		'fed.noNews': 'No Fed news available',
 		'common.since': 'Since {year}',
 		'common.noData': 'No data available',
+		'common.noDataYet': 'No data yet',
+		'common.noNews': 'No news available',
+
+		'panel.map': 'Global Situation',
+
+		'situation.noRecentNews': 'No recent news',
+
+		'map.zoomIn': 'Zoom in',
+		'map.zoomOut': 'Zoom out',
+		'map.reset': 'Reset',
+
+		'monitors.none': 'No monitors configured',
+		'monitors.create': '+ Create Monitor',
+		'monitors.edit': 'Edit',
+		'monitors.delete': 'Delete',
+
+		'fed.noFedData': 'No Fed data available',
+		'fed.balanceSheet': 'Federal Reserve Balance Sheet',
+
+		'markets.noData': 'No market data available',
+		'heatmap.noData': 'No sector data available',
+		'crypto.noData': 'No crypto data available',
+		'commodities.title': 'Commodities / VIX',
+		'commodities.noData': 'No commodity data available',
+		'whales.noData': 'No whale transactions detected',
+		'polymarket.noData': 'No predictions available',
+		'contracts.noData': 'No contracts available',
+		'layoffs.noData': 'No recent layoffs data',
+		'intel.noData': 'No intel available',
+
+		'analysis.insufficient': 'Insufficient data for analysis',
+		'analysis.noneSignificant': 'No significant patterns detected',
+
+		'narrative.insufficient': 'Insufficient data for narrative analysis',
+		'narrative.noneSignificant': 'No significant narratives detected',
+		'narrative.emergingFringe': 'Emerging Fringe',
+		'narrative.crossovers': 'Fringe → Mainstream Crossovers',
+		'narrative.watch': 'Narrative Watch',
+		'narrative.disinfo': 'Disinfo Signals',
+
+		'correlation.emerging': 'Emerging Patterns',
+		'correlation.momentum': 'Momentum Signals',
+		'correlation.crossSource': 'Cross-Source Links',
+		'correlation.predictive': 'Predictive Signals',
+		'printer.unit': 'T USD',
 
 		'situation.venezuela.title': 'Venezuela Watch',
 		'situation.venezuela.subtitle': 'Humanitarian crisis monitoring',
@@ -171,6 +216,51 @@ const dict: Record<Lang, Record<string, string>> = {
 		'fed.noNews': '暂无美联储新闻',
 		'common.since': '任职自 {year}',
 		'common.noData': '暂无数据',
+		'common.noDataYet': '暂无数据',
+		'common.noNews': '暂无新闻',
+
+		'panel.map': '全球态势',
+
+		'situation.noRecentNews': '暂无近期新闻',
+
+		'map.zoomIn': '放大',
+		'map.zoomOut': '缩小',
+		'map.reset': '重置',
+
+		'monitors.none': '还没有配置监控',
+		'monitors.create': '+ 创建监控',
+		'monitors.edit': '编辑',
+		'monitors.delete': '删除',
+
+		'fed.noFedData': '暂无美联储数据',
+		'fed.balanceSheet': '美联储资产负债表',
+
+		'markets.noData': '暂无市场数据',
+		'heatmap.noData': '暂无板块数据',
+		'crypto.noData': '暂无加密数据',
+		'commodities.title': '大宗商品 / VIX',
+		'commodities.noData': '暂无大宗商品数据',
+		'whales.noData': '未检测到鲸鱼交易',
+		'polymarket.noData': '暂无预测数据',
+		'contracts.noData': '暂无合同数据',
+		'layoffs.noData': '暂无近期裁员数据',
+		'intel.noData': '暂无情报',
+
+		'analysis.insufficient': '用于分析的数据不足',
+		'analysis.noneSignificant': '未检测到明显模式',
+
+		'narrative.insufficient': '用于叙事分析的数据不足',
+		'narrative.noneSignificant': '未检测到显著叙事',
+		'narrative.emergingFringe': '边缘叙事萌芽',
+		'narrative.crossovers': '边缘 → 主流 交叉点',
+		'narrative.watch': '叙事观察',
+		'narrative.disinfo': '虚假信息信号',
+
+		'correlation.emerging': '新出现的模式',
+		'correlation.momentum': '动量信号',
+		'correlation.crossSource': '跨来源关联',
+		'correlation.predictive': '预测信号',
+		'printer.unit': '万亿美元',
 
 		'situation.venezuela.title': '委内瑞拉观察',
 		'situation.venezuela.subtitle': '人道主义危机监控',

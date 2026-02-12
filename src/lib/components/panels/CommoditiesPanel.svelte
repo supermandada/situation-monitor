@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from '$lib/i18n';
 	import { Panel, MarketItem } from '$lib/components/common';
 	import { commodities, vix } from '$lib/stores';
 
@@ -27,14 +28,14 @@
 
 <Panel
 	id="commodities"
-	title="Commodities / VIX"
+	title={t('commodities.title')}
 	status={vixStatus}
 	statusClass={vixClass}
 	{loading}
 	{error}
 >
 	{#if items.length === 0 && !loading && !error}
-		<div class="empty-state">No commodity data available</div>
+		<div class="empty-state">{t('commodities.noData')}</div>
 	{:else}
 		<div class="commodities-list">
 			{#each items as item (item.symbol)}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from '$lib/i18n';
 	import { Panel, Badge } from '$lib/components/common';
 	import { getRelativeTime } from '$lib/utils';
 	import { intelNews } from '$lib/stores';
@@ -63,9 +64,9 @@
 	}
 </script>
 
-<Panel id="intel" title="Intel Feed" {count} {loading} {error}>
+<Panel id="intel" title={t('panel.intel')} {count} {loading} {error}>
 	{#if items.length === 0 && !loading && !error}
-		<div class="empty-state">No intel available</div>
+		<div class="empty-state">{t('intel.noData')}</div>
 	{:else}
 		<div class="intel-list">
 			{#each items as item (item.id)}
