@@ -15,16 +15,16 @@ export interface Preset {
 export const PRESETS: Record<string, Preset> = {
 	'news-junkie': {
 		id: 'news-junkie',
-		name: 'News Junkie',
+		name: 'preset.newsJunkie.name',
 		icon: '📰',
-		description: 'Stay on top of breaking news across politics, tech, and finance',
+		description: 'preset.newsJunkie.desc',
 		panels: ['politics', 'tech', 'finance', 'gov', 'ai', 'mainchar', 'map']
 	},
 	trader: {
 		id: 'trader',
-		name: 'Trader',
+		name: 'preset.trader.name',
 		icon: '📈',
-		description: 'Market-focused dashboard with stocks, crypto, and commodities',
+		description: 'preset.trader.desc',
 		panels: [
 			'markets',
 			'heatmap',
@@ -39,9 +39,9 @@ export const PRESETS: Record<string, Preset> = {
 	},
 	geopolitics: {
 		id: 'geopolitics',
-		name: 'Geopolitics Watcher',
+		name: 'preset.geopolitics.name',
 		icon: '🌍',
-		description: 'Global situation awareness and regional hotspots',
+		description: 'preset.geopolitics.desc',
 		panels: [
 			'map',
 			'intel',
@@ -57,23 +57,23 @@ export const PRESETS: Record<string, Preset> = {
 	},
 	intel: {
 		id: 'intel',
-		name: 'Intelligence Analyst',
+		name: 'preset.intel.name',
 		icon: '🔍',
-		description: 'Deep analysis, pattern detection, and narrative tracking',
+		description: 'preset.intel.desc',
 		panels: ['map', 'intel', 'leaders', 'correlation', 'narrative', 'mainchar', 'politics']
 	},
 	minimal: {
 		id: 'minimal',
-		name: 'Minimal',
+		name: 'preset.minimal.name',
 		icon: '⚡',
-		description: 'Just the essentials - map, news, and markets',
+		description: 'preset.minimal.desc',
 		panels: ['map', 'politics', 'markets']
 	},
 	everything: {
 		id: 'everything',
-		name: 'Everything',
+		name: 'preset.everything.name',
 		icon: '🎛️',
-		description: 'Kitchen sink - all panels enabled',
+		description: 'preset.everything.desc',
 		panels: [
 			'map',
 			'politics',

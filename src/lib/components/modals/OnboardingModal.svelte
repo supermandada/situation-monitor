@@ -44,8 +44,8 @@
 					{@const preset = PRESETS[presetId]}
 					<button class="preset-card" onclick={() => handleSelectPreset(presetId)}>
 						<div class="preset-icon">{preset.icon}</div>
-						<div class="preset-name">{preset.name}</div>
-						<div class="preset-description">{preset.description}</div>
+						<div class="preset-name">{t(preset.name)}</div>
+						<div class="preset-description">{t(preset.description)}</div>
 						<div class="preset-panel-count">{t('modal.onboarding.panelsCount', { n: preset.panels.length })}</div>
 					</button>
 				{/each}

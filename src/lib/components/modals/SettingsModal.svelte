@@ -37,7 +37,7 @@
 							checked={isEnabled}
 							onchange={() => handleTogglePanel(panelId)}
 						/>
-						<span class="panel-name">{config.name}</span>
+						<span class="panel-name">{t(config.name)}</span>
 						<span class="panel-priority">P{config.priority}</span>
 					</label>
 				{/each}
