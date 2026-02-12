@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { tr } from '$lib/i18n';
 	import { Panel } from '$lib/components/common';
 	import { allNewsItems } from '$lib/stores';
 	import { calculateMainCharacter, type MainCharacterResults } from '$lib/analysis';
@@ -10,12 +10,12 @@
 	const rankings = $derived(results.characters);
 </script>
 
-<Panel id="mainchar" title={t('panel.mainchar')}>
+<Panel id="mainchar" title={$tr('panel.mainchar')}>
 	{#if !topChar}
-		<div class="empty-state">{t('common.noDataYet')}</div>
+		<div class="empty-state">{$tr('common.noDataYet')}</div>
 	{:else}
 		<div class="main-char-display">
-			<div class="main-char-label">{t('panel.mainchar')}</div>
+			<div class="main-char-label">{$tr('panel.mainchar')}</div>
 			<div class="main-char-name">{topChar.name}</div>
 			<div class="main-char-count">{topChar.count} mentions in headlines</div>
 

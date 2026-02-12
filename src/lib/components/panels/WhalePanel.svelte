@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { tr } from '$lib/i18n';
 	import { Panel } from '$lib/components/common';
 
 	interface WhaleTransaction {
@@ -30,9 +30,9 @@
 	}
 </script>
 
-<Panel id="whales" title={t('panel.whales')} {count} {loading} {error}>
+<Panel id="whales" title={$tr('panel.whales')} {count} {loading} {error}>
 	{#if whales.length === 0 && !loading && !error}
-		<div class="empty-state">{t('whales.noData')}</div>
+		<div class="empty-state">{$tr('whales.noData')}</div>
 	{:else}
 		<div class="whale-list">
 			{#each whales as whale, i (whale.hash + i)}

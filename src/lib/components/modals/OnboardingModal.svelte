@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { PRESETS, PRESET_ORDER } from '$lib/config';
-	import { t } from '$lib/i18n';
+	import { tr } from '$lib/i18n';
 
 	interface Props {
 		open: boolean;
@@ -32,11 +32,11 @@
 	<div class="modal-overlay">
 		<div class="modal onboarding-modal">
 			<div class="modal-header">
-				<button class="close-btn" onclick={handleClose} aria-label={t('modal.onboarding.skip')}>
+				<button class="close-btn" onclick={handleClose} aria-label={$tr('modal.onboarding.skip')}>
 					&times;
 				</button>
-				<h2>{t('modal.onboarding.welcome')}</h2>
-				<p class="subtitle">{t('modal.onboarding.subtitle')}</p>
+				<h2>{$tr('modal.onboarding.welcome')}</h2>
+				<p class="subtitle">{$tr('modal.onboarding.subtitle')}</p>
 			</div>
 
 			<div class="preset-grid">
@@ -44,15 +44,15 @@
 					{@const preset = PRESETS[presetId]}
 					<button class="preset-card" onclick={() => handleSelectPreset(presetId)}>
 						<div class="preset-icon">{preset.icon}</div>
-						<div class="preset-name">{t(preset.name)}</div>
-						<div class="preset-description">{t(preset.description)}</div>
-						<div class="preset-panel-count">{t('modal.onboarding.panelsCount', { n: preset.panels.length })}</div>
+						<div class="preset-name">{$tr(preset.name)}</div>
+						<div class="preset-description">{$tr(preset.description)}</div>
+						<div class="preset-panel-count">{$tr('modal.onboarding.panelsCount', { n: preset.panels.length })}</div>
 					</button>
 				{/each}
 			</div>
 
 			<div class="modal-footer">
-				<p class="hint">{t('modal.onboarding.hint')}</p>
+				<p class="hint">{$tr('modal.onboarding.hint')}</p>
 			</div>
 		</div>
 	</div>

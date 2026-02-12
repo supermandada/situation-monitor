@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { tr } from '$lib/i18n';
 	import { Panel, MarketItem } from '$lib/components/common';
 	import { commodities, vix } from '$lib/stores';
 
@@ -28,14 +28,14 @@
 
 <Panel
 	id="commodities"
-	title={t('commodities.title')}
+	title={$tr('commodities.title')}
 	status={vixStatus}
 	statusClass={vixClass}
 	{loading}
 	{error}
 >
 	{#if items.length === 0 && !loading && !error}
-		<div class="empty-state">{t('commodities.noData')}</div>
+		<div class="empty-state">{$tr('commodities.noData')}</div>
 	{:else}
 		<div class="commodities-list">
 			{#each items as item (item.symbol)}

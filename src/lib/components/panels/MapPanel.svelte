@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { tr } from '$lib/i18n';
 	import { onMount } from 'svelte';
 	import { Panel } from '$lib/components/common';
 	import {
@@ -576,7 +576,7 @@
 	});
 </script>
 
-<Panel id="map" title={t('panel.map')} {loading} {error}>
+<Panel id="map" title={$tr('panel.map')} {loading} {error}>
 	<div class="map-container" bind:this={mapContainer}>
 		<svg class="map-svg"></svg>
 		{#if tooltipVisible && tooltipContent}
@@ -591,9 +591,9 @@
 			</div>
 		{/if}
 		<div class="zoom-controls">
-			<button class="zoom-btn" onclick={zoomIn} title={t('map.zoomIn')}>+</button>
-			<button class="zoom-btn" onclick={zoomOut} title={t('map.zoomOut')}>−</button>
-			<button class="zoom-btn" onclick={resetZoom} title={t('map.reset')}>⟲</button>
+			<button class="zoom-btn" onclick={zoomIn} title={$tr('map.zoomIn')}>+</button>
+			<button class="zoom-btn" onclick={zoomOut} title={$tr('map.zoomOut')}>−</button>
+			<button class="zoom-btn" onclick={resetZoom} title={$tr('map.reset')}>⟲</button>
 		</div>
 		<div class="map-legend">
 			<div class="legend-item">

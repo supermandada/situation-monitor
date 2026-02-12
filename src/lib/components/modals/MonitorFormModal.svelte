@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Modal from './Modal.svelte';
-	import { t } from '$lib/i18n';
+	import { tr } from '$lib/i18n';
 	import { monitors } from '$lib/stores';
 	import type { CustomMonitor } from '$lib/types';
 
@@ -43,12 +43,12 @@
 			.filter((k) => k.length > 0);
 
 		if (!trimmedName) {
-			error = t('modal.monitor.errName');
+			error = $tr('modal.monitor.errName');
 			return;
 		}
 
 		if (keywordList.length === 0) {
-			error = t('modal.monitor.errKeywords');
+			error = $tr('modal.monitor.errKeywords');
 			return;
 		}
 
@@ -68,7 +68,7 @@
 			});
 
 			if (!result) {
-				error = t('modal.monitor.errMax');
+				error = $tr('modal.monitor.errMax');
 				return;
 			}
 		}
@@ -84,48 +84,48 @@
 	}
 </script>
 
-<Modal {open} title={editMonitor ? t('modal.monitor.edit') : t('modal.monitor.create')} {onClose}>
+<Modal {open} title={editMonitor ? $tr('modal.monitor.edit') : $tr('modal.monitor.create')} {onClose}>
 	<form class="monitor-form" onsubmit={handleSubmit}>
 		{#if error}
 			<div class="form-error">{error}</div>
 		{/if}
 
 		<div class="form-group">
-			<label for="monitor-name">{t('modal.monitor.name')}</label>
+			<label for="monitor-name">{$tr('modal.monitor.name')}</label>
 			<input
 				id="monitor-name"
 				type="text"
 				bind:value={name}
-				placeholder={t('modal.monitor.namePlaceholder')}
+				placeholder={$tr('modal.monitor.namePlaceholder')}
 				maxlength="50"
 			/>
 		</div>
 
 		<div class="form-group">
-			<label for="monitor-keywords">{t('modal.monitor.keywords')}</label>
+			<label for="monitor-keywords">{$tr('modal.monitor.keywords')}</label>
 			<input
 				id="monitor-keywords"
 				type="text"
 				bind:value={keywords}
-				placeholder={t('modal.monitor.keywordsPlaceholder')}
+				placeholder={$tr('modal.monitor.keywordsPlaceholder')}
 			/>
-			<p class="form-hint">{t('modal.monitor.keywordsHint')}</p>
+			<p class="form-hint">{$tr('modal.monitor.keywordsHint')}</p>
 		</div>
 
 		<div class="form-group">
 			<label class="checkbox-label">
 				<input type="checkbox" bind:checked={enabled} />
-				<span>{t('modal.monitor.enabled')}</span>
+				<span>{$tr('modal.monitor.enabled')}</span>
 			</label>
 		</div>
 
 		<div class="form-actions">
 			{#if editMonitor}
-				<button type="button" class="delete-btn" onclick={handleDelete}> {t('modal.monitor.delete')} </button>
+				<button type="button" class="delete-btn" onclick={handleDelete}> {$tr('modal.monitor.delete')} </button>
 			{/if}
-			<button type="button" class="cancel-btn" onclick={onClose}> {t('modal.monitor.cancel')} </button>
+			<button type="button" class="cancel-btn" onclick={onClose}> {$tr('modal.monitor.cancel')} </button>
 			<button type="submit" class="submit-btn">
-				{editMonitor ? t('modal.monitor.save') : t('modal.monitor.createBtn')}
+				{editMonitor ? $tr('modal.monitor.save') : $tr('modal.monitor.createBtn')}
 			</button>
 		</div>
 	</form>

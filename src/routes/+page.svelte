@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { Header, Dashboard } from '$lib/components/layout';
-	import { t } from '$lib/i18n';
+	import { tr } from '$lib/i18n';
 	import { SettingsModal, MonitorFormModal, OnboardingModal } from '$lib/components/modals';
 	import {
 		NewsPanel,
@@ -218,8 +218,8 @@
 </script>
 
 <svelte:head>
-	<title>{t('app.title')}</title>
-	<meta name="description" content={t('app.description')} />
+	<title>{$tr('app.title')}</title>
+	<meta name="description" content={$tr('app.description')} />
 </svelte:head>
 
 <div class="app">
@@ -237,31 +237,31 @@
 			<!-- News Panels -->
 			{#if isPanelVisible('politics')}
 				<div class="panel-slot">
-					<NewsPanel category="politics" panelId="politics" title={t('panel.politics')} />
+					<NewsPanel category="politics" panelId="politics" title={$tr('panel.politics')} />
 				</div>
 			{/if}
 
 			{#if isPanelVisible('tech')}
 				<div class="panel-slot">
-					<NewsPanel category="tech" panelId="tech" title={t('panel.tech')} />
+					<NewsPanel category="tech" panelId="tech" title={$tr('panel.tech')} />
 				</div>
 			{/if}
 
 			{#if isPanelVisible('finance')}
 				<div class="panel-slot">
-					<NewsPanel category="finance" panelId="finance" title={t('panel.finance')} />
+					<NewsPanel category="finance" panelId="finance" title={$tr('panel.finance')} />
 				</div>
 			{/if}
 
 			{#if isPanelVisible('gov')}
 				<div class="panel-slot">
-					<NewsPanel category="gov" panelId="gov" title={t('panel.gov')} />
+					<NewsPanel category="gov" panelId="gov" title={$tr('panel.gov')} />
 				</div>
 			{/if}
 
 			{#if isPanelVisible('ai')}
 				<div class="panel-slot">
-					<NewsPanel category="ai" panelId="ai" title={t('panel.ai')} />
+					<NewsPanel category="ai" panelId="ai" title={$tr('panel.ai')} />
 				</div>
 			{/if}
 
@@ -336,8 +336,8 @@
 					<SituationPanel
 						panelId="venezuela"
 						config={{
-							title: t('situation.venezuela.title'),
-							subtitle: t('situation.venezuela.subtitle'),
+							title: $tr('situation.venezuela.title'),
+							subtitle: $tr('situation.venezuela.subtitle'),
 							criticalKeywords: ['maduro', 'caracas', 'venezuela', 'guaido']
 						}}
 						news={$allNewsItems.filter(
@@ -354,8 +354,8 @@
 					<SituationPanel
 						panelId="greenland"
 						config={{
-							title: t('situation.greenland.title'),
-							subtitle: t('situation.greenland.subtitle'),
+							title: $tr('situation.greenland.title'),
+							subtitle: $tr('situation.greenland.subtitle'),
 							criticalKeywords: ['greenland', 'arctic', 'nuuk', 'denmark']
 						}}
 						news={$allNewsItems.filter(
@@ -372,8 +372,8 @@
 					<SituationPanel
 						panelId="iran"
 						config={{
-							title: t('situation.iran.title'),
-							subtitle: t('situation.iran.subtitle'),
+							title: $tr('situation.iran.title'),
+							subtitle: $tr('situation.iran.subtitle'),
 							criticalKeywords: [
 								'protest',
 								'uprising',

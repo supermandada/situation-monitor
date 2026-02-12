@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { tr } from '$lib/i18n';
 	import { Panel } from '$lib/components/common';
 	import { timeAgo } from '$lib/utils';
 
@@ -21,9 +21,9 @@
 	const count = $derived(layoffs.length);
 </script>
 
-<Panel id="layoffs" title={t('panel.layoffs')} {count} {loading} {error}>
+<Panel id="layoffs" title={$tr('panel.layoffs')} {count} {loading} {error}>
 	{#if layoffs.length === 0 && !loading && !error}
-		<div class="empty-state">{t('layoffs.noData')}</div>
+		<div class="empty-state">{$tr('layoffs.noData')}</div>
 	{:else}
 		<div class="layoffs-list">
 			{#each layoffs as layoff, i (layoff.company + i)}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Modal from './Modal.svelte';
-	import { t } from '$lib/i18n';
+	import { tr } from '$lib/i18n';
 	import { settings } from '$lib/stores';
 	import { PANELS, type PanelId } from '$lib/config';
 
@@ -21,11 +21,11 @@
 	}
 </script>
 
-<Modal {open} title={t('modal.settings.title')} {onClose}>
+<Modal {open} title={$tr('modal.settings.title')} {onClose}>
 	<div class="settings-sections">
 		<section class="settings-section">
-			<h3 class="section-title">{t('modal.settings.enabledPanels')}</h3>
-			<p class="section-desc">{t('modal.settings.enabledPanelsDesc')}</p>
+			<h3 class="section-title">{$tr('modal.settings.enabledPanels')}</h3>
+			<p class="section-desc">{$tr('modal.settings.enabledPanelsDesc')}</p>
 
 			<div class="panels-grid">
 				{#each Object.entries(PANELS) as [id, config]}
@@ -37,7 +37,7 @@
 							checked={isEnabled}
 							onchange={() => handleTogglePanel(panelId)}
 						/>
-						<span class="panel-name">{t(config.name)}</span>
+						<span class="panel-name">{$tr(config.name)}</span>
 						<span class="panel-priority">P{config.priority}</span>
 					</label>
 				{/each}
@@ -45,12 +45,12 @@
 		</section>
 
 		<section class="settings-section">
-			<h3 class="section-title">{t('modal.settings.dashboard')}</h3>
+			<h3 class="section-title">{$tr('modal.settings.dashboard')}</h3>
 			{#if onReconfigure}
-				<button class="reconfigure-btn" onclick={onReconfigure}> {t('modal.settings.reconfigure')} </button>
-				<p class="btn-hint">{t('modal.settings.reconfigureHint')}</p>
+				<button class="reconfigure-btn" onclick={onReconfigure}> {$tr('modal.settings.reconfigure')} </button>
+				<p class="btn-hint">{$tr('modal.settings.reconfigureHint')}</p>
 			{/if}
-			<button class="reset-btn" onclick={handleResetPanels}> {t('modal.settings.reset')} </button>
+			<button class="reset-btn" onclick={handleResetPanels}> {$tr('modal.settings.reset')} </button>
 		</section>
 	</div>
 </Modal>

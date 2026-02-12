@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import { writable } from 'svelte/store';
+import { derived, writable } from 'svelte/store';
 
 export type Lang = 'en' | 'zh';
 
@@ -349,10 +349,7 @@ const dict: Record<Lang, Record<string, string>> = {
 	}
 };
 
-export function t(key: string, params?: Record<string, string | number>): string {
-	let current: Lang = 'en';
-	lang.subscribe((l) => (current = l))();
-
+function translate(current: Lang, key: string, params?: Record<string, string | number>): string {
 	let template = dict[current][key] ?? dict.en[key] ?? key;
 	if (params) {
 		for (const [k, v] of Object.entries(params)) {
@@ -361,6 +358,24 @@ export function t(key: string, params?: Record<string, string | number>): string
 	}
 	return template;
 }
+
+/**
+ * Non-reactive translation helper.
+ * Prefer using the reactive store `tr` (i.e. `$tr('key')`) inside Svelte components.
+ */
+export function t(key: string, params?: Record<string, string | number>): string {
+	let current: Lang = 'en';
+	lang.subscribe((l) => (current = l))();
+	return translate(current, key, params);
+}
+
+/**
+ * Reactive translator store.
+ * Usage in Svelte: `{$tr('app.title')}`. Re-renders automatically when language changes.
+ */
+export const tr = derived(lang, ($lang) => {
+	return (key: string, params?: Record<string, string | number>) => translate($lang, key, params);
+});
 
 export function toggleLang(): void {
 	lang.update((l) => (l === 'en' ? 'zh' : 'en'));

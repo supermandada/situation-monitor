@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { tr } from '$lib/i18n';
 	import { Panel, Badge } from '$lib/components/common';
 	import { analyzeNarratives } from '$lib/analysis/narrative';
 	import type { NewsItem } from '$lib/types';
@@ -43,14 +43,14 @@
 	}
 </script>
 
-<Panel id="narrative" title={t('panel.narrative')} {loading} {error}>
+<Panel id="narrative" title={$tr('panel.narrative')} {loading} {error}>
 	{#if news.length === 0 && !loading && !error}
-		<div class="empty-state">{t('narrative.insufficient')}</div>
+		<div class="empty-state">{$tr('narrative.insufficient')}</div>
 	{:else if analysis}
 		<div class="narrative-content">
 			{#if analysis.emergingFringe.length > 0}
 				<div class="section">
-					<div class="section-title">{t('narrative.emergingFringe')}</div>
+					<div class="section-title">{$tr('narrative.emergingFringe')}</div>
 					{#each analysis.emergingFringe.slice(0, 4) as narrative}
 						<div class="narrative-item">
 							<div class="narrative-header">
@@ -75,7 +75,7 @@
 
 			{#if analysis.fringeToMainstream.length > 0}
 				<div class="section">
-					<div class="section-title">{t('narrative.crossovers')}</div>
+					<div class="section-title">{$tr('narrative.crossovers')}</div>
 					{#each analysis.fringeToMainstream.slice(0, 3) as crossover}
 						<div class="crossover-item">
 							<div class="crossover-narrative">{crossover.name}</div>
@@ -94,7 +94,7 @@
 
 			{#if analysis.narrativeWatch.length > 0}
 				<div class="section">
-					<div class="section-title">{t('narrative.watch')}</div>
+					<div class="section-title">{$tr('narrative.watch')}</div>
 					<div class="themes-grid">
 						{#each analysis.narrativeWatch.slice(0, 6) as narrative}
 							<div class="theme-tag">
@@ -108,7 +108,7 @@
 
 			{#if analysis.disinfoSignals.length > 0}
 				<div class="section">
-					<div class="section-title">{t('narrative.disinfo')}</div>
+					<div class="section-title">{$tr('narrative.disinfo')}</div>
 					{#each analysis.disinfoSignals.slice(0, 3) as signal}
 						<div class="disinfo-item">
 							<div class="disinfo-header">
@@ -125,11 +125,11 @@
 			{/if}
 
 			{#if analysis.emergingFringe.length === 0 && analysis.fringeToMainstream.length === 0}
-				<div class="empty-state">{t('narrative.noneSignificant')}</div>
+				<div class="empty-state">{$tr('narrative.noneSignificant')}</div>
 			{/if}
 		</div>
 	{:else}
-		<div class="empty-state">{t('narrative.noneSignificant')}</div>
+		<div class="empty-state">{$tr('narrative.noneSignificant')}</div>
 	{/if}
 </Panel>
 

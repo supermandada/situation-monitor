@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { tr } from '$lib/i18n';
 	import { Panel } from '$lib/components/common';
 
 	interface Prediction {
@@ -29,9 +29,9 @@
 	}
 </script>
 
-<Panel id="polymarket" title={t('panel.polymarket')} {count} {loading} {error}>
+<Panel id="polymarket" title={$tr('panel.polymarket')} {count} {loading} {error}>
 	{#if predictions.length === 0 && !loading && !error}
-		<div class="empty-state">{t('polymarket.noData')}</div>
+		<div class="empty-state">{$tr('polymarket.noData')}</div>
 	{:else}
 		<div class="predictions-list">
 			{#each predictions as pred (pred.id)}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Panel, Badge } from '$lib/components/common';
-	import { t } from '$lib/i18n';
+	import { tr } from '$lib/i18n';
 	import { getRelativeTime } from '$lib/utils';
 	import { fedNews, fedIndicators, fedVideos } from '$lib/stores';
 	import { isFredConfigured } from '$lib/api/fred';
@@ -58,7 +58,7 @@
 	}
 </script>
 
-<Panel id="fed" title={t('panel.fed')} count={newsState.items.length} {loading} {error}>
+<Panel id="fed" title={$tr('panel.fed')} count={newsState.items.length} {loading} {error}>
 	<!-- Economic Indicators -->
 	{#if hasApiKey && indicatorList.length > 0}
 		<div class="indicators-section">
@@ -76,7 +76,7 @@
 		</div>
 	{:else if !hasApiKey && !loading}
 		<div class="no-api-key">
-			<span class="no-api-key-text">{t('fed.noApiKey')}</span>
+			<span class="no-api-key-text">{$tr('fed.noApiKey')}</span>
 		</div>
 	{/if}
 
@@ -84,14 +84,14 @@
 	{#if videoItems.length > 0}
 		<div class="video-section">
 			<div class="section-header">
-				<span class="section-title">{t('fed.speechesVideo')}</span>
+				<span class="section-title">{$tr('fed.speechesVideo')}</span>
 				<a
 					href="https://www.federalreserve.gov/live-broadcast.htm"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="live-link"
 				>
-					{t('fed.liveBroadcast')}
+					{$tr('fed.liveBroadcast')}
 				</a>
 			</div>
 			<div class="video-list">
@@ -116,7 +116,7 @@
 	<!-- News Feed -->
 	<div class="news-section">
 		{#if newsState.items.length === 0 && !loading && !error}
-			<div class="empty-state">{t('fed.noNews')}</div>
+			<div class="empty-state">{$tr('fed.noNews')}</div>
 		{:else}
 			<div class="fed-news-list">
 				{#each newsState.items as item (item.id)}
